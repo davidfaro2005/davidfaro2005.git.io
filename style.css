@@ -1,190 +1,253 @@
-/* --- Global & Sticky Footer Setup --- */
+/* 1. Global Reset & Core Theme */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%; /* Required for sticky footer */
 }
 
 body {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: #1a1a1a; /* Alterado para #1a1a1a */
+    color: #efefef;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    display: flex;
-    flex-direction: column; /* Stacks header, main, footer */
-}
-
-h1, h2, h3, a {
-    color: #cb95e4;
-    text-decoration: none;
 }
 
 main {
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 0 20px;
-    flex: 1 0 auto; /* Pushes footer down if content is short */
-    width: 100%;
+    min-height: 80vh; 
 }
 
-/* --- Header --- */
+/* 2. Header & Navigation */
 header {
-    background-color: #212122;
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #212122; /* Alterado para #212122 */
+    padding: 40px 20px;
     border-bottom: 1px solid #333;
-}
-
-header div:first-child {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
 }
 
-header img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-header nav {
+.header-content {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 1000px; /* Conteúdo mais largo */
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #cb95e4; /* Alterado para #cb95e4 */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: none; /* Removido gradient */
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: #cb95e4; /* Alterado para #cb95e4 */
+}
+
+nav a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding-bottom: 5px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover, 
+nav a.active { 
+    color: #cb95e4; /* Alterado para #cb95e4 */
+}
+
+nav a.active {
+    border-bottom: 2px solid #cb95e4; /* Alterado para #cb95e4 */
+}
+
+/* 3. Section Typography & General Layout */
+section {
+    max-width: 1200px; /* Conteúdo mais largo (menos bordas laterais) */
+    margin: 60px auto;
+    padding: 0 40px;
+}
+
+h2 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    color: #cb95e4; /* Alterado para #cb95e4 */
+}
+
+h3 {
+    color: #cb95e4; /* Alterado para #cb95e4 */
+}
+
+.section-intro {
+    margin-bottom: 40px;
+}
+
+p a {
+    color: #cb95e4; /* Alterado para #cb95e4 */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* 4. About & Technical Stack (Lado a Lado) */
+/* Ajuste no HTML: Envolva a div .about-content e a section #skills num container ou ajuste o fluxo */
+#about {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.about-content {
+    flex: 2; /* "About me" mais largo */
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-/* --- About Me (Index) Alignment --- */
-/* Target the main container of the About Me section */
-section > h2 + div {
-    display: flex;
-    gap: 50px;
-    align-items: flex-start; /* Aligns "About Me" text with "Education" title top */
+#skills {
+    flex: 1; /* "Technical stack" mais fino */
+    margin: 0; /* Remove margens para alinhar com o About */
+    padding: 0;
 }
 
-/* Left Column: Text & Stack */
-section > h2 + div > div:first-child {
-    flex: 2;
+#skills h2 {
+    font-size: 1.5rem;
 }
 
-/* Right Column: Education */
-section > h2 + div > div:last-child {
-    flex: 1;
-}
-
-/* Education Card Styling */
-section > h2 + div > div:last-child > div {
+.education {
     background: #212122;
     padding: 20px;
     border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 15px;
 }
 
-/* Technical Stack (pills) */
-section:last-of-type > div {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-section:last-of-type > div > div {
+.skill-item {
     background: #212122;
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: 1px solid #cb95e4;
+    border: 1px solid #333;
+    color: #efefef;
+    padding: 6px 12px;
+    border-radius: 4px; 
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
 }
 
-/* --- Games Section (Card Fixes) --- */
-/* Ensure game cards take full width but screenshots stay small */
-main > section > div {
-    margin-bottom: 30px;
+.skill-item:hover {
+    background: #cb95e4;
+    border-color: #cb95e4;
+    color: #1a1a1a;
 }
 
-main > section > div > div {
+/* 5. Games & Project Cards */
+.project-card {
     background: #212122;
     padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #333;
-    width: 100%; /* Fixes the half-width issue */
+    border-radius: 12px;
+    margin-bottom: 40px;
 }
 
-/* Screenshots Row */
-main > section > div > div > div:not(.game-screenshots) {
+.game-screenshots {
     display: flex;
-    gap: 15px;
-    margin: 15px 0;
-    overflow-x: auto;
+    gap: 10px;
+    margin: 20px 0;
 }
 
-main > section > div > div img {
-    width: 200px; /* Limits size of game screenshots */
-    height: 120px;
+.game-screenshots img {
+    width: calc(33.33% - 7px);
+    height: 180px;
     object-fit: cover;
     border-radius: 6px;
+    border: 1px solid #333;
 }
 
-/* --- Galleries (2D Art & Photography) --- */
-/* This targets the div holding the images in art/photography */
-section > div:not(.game-screenshots) {
+/* 6. 3D Showcase (2 cards lado a lado) */
+.work-showcase {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr; /* 2 cards lado a lado */
+    gap: 30px;
     margin-top: 20px;
 }
 
-/* Fixes the "first image to the right" issue by ensuring items start at the beginning */
-section > div > div {
+.work-item {
+    background: #212122;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    border-color: #cb95e4;
+}
+
+.work-desc {
+    color: #888;
+    font-size: 0.9rem;
+    font-style: italic;
+    border-left: 2px solid #cb95e4;
+    padding-left: 15px;
+}
+
+/* 7. Photography Grid (Imagens menores) */
+.pinterest-grid {
+    column-count: 4; /* Aumentado de 3 para 4 para as imagens ficarem menores */
+    column-gap: 15px;
     width: 100%;
 }
 
-section img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
+.photo-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
-/* Photography specific sizing to prevent them from being too big */
-.photography-page img {
-    height: 250px;
-    object-fit: cover;
-}
-
-/* --- Modeling (2 Side by Side) --- */
-section#modeling > div, 
-main > section:last-child > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-/* --- Footer (Sticky) --- */
+/* 8. Footer & Socials */
 footer {
-    flex-shrink: 0; /* Prevents footer from squishing */
-    background-color: #212122;
-    padding: 30px;
     text-align: center;
-    border-top: 1px solid #333;
+    padding: 40px;
+    color: #666;
 }
 
-footer div { margin-bottom: 10px; }
-footer a { margin: 0 10px; font-size: 0.9rem; }
-footer p { font-size: 0.8rem; color: #777; }
+.social-links a:hover {
+    color: #cb95e4;
+}
 
-/* Responsive */
-@media (max-width: 768px) {
-    section > h2 + div, 
-    section#modeling > div {
-        flex-direction: column;
-        grid-template-columns: 1fr;
-    }
-    header {
-        flex-direction: column;
-        padding: 20px;
-    }
+/* 9. Responsive Adjustments */
+@media (max-width: 1000px) {
+    #about { flex-direction: column; }
+    .work-showcase { grid-template-columns: 1fr; }
+    .pinterest-grid { column-count: 3; }
+}
+
+@media (max-width: 600px) {
+    .pinterest-grid { column-count: 2; }
+    header { padding: 20px 10px; }
+    section { padding: 0 20px; }
 }

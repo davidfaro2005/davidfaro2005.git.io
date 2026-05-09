@@ -9,32 +9,33 @@
 <body>
 
     <header>
-        <div>
-            <img src="assets/profile.jpg" alt="Milena PFP">
+        <div class="header-content">
+            <img src="assets/profile.jpg" alt="Milena Faro Profile" class="profile-pic">
             <h1>Milena Faro</h1>
         </div>
         <nav>
             <a href="index.html" class="active">About Me</a>
             <a href="games.html">Games</a>
-            <a href="digitalArt.html">2D Art</a>
-            <a href="modeling.html">3D Art</a>
+            <a href="3d-work.html">2D Work</a>
+            <a href="3d-work.html">3D Work</a>
             <a href="photography.html">Photography</a>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <div>
-                <div>
-                    <p>Hello! My name is Milena Faro, I'm a 21 year old portuguese student at the University of Aveiro, currently finishing my first degree and working on a game project called "GreenGuardians". My main focus is 2D Art, but I also have a strong liking for photography and 3D modelling'.</p>
+    <main class="container-flex-row"> <!-- Novo container para o layout lado a lado -->
+        <section id="about">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <div class="bio">
+                    <p>Hello! My name is Milena Faro, I'm a 21 year old portuguese student finishing my first degree and currently working on a project called "GreenGuardians". My main focus is digital art, but I also have a strong liking for photography, 3D modelling and animation.'</p>
                 </div>
-                <div>
+                
+                <div class="education-container">
                     <h3>Education</h3>
-                    <div> <!-- This is the card -->
-                        <div>
-                            <img src="assets/ualogo.png" alt="University of Aveiro Logo">
-                            <div>
+                    <div class="education">
+                        <div class="edu-item">
+                            <img src="assets/ualogo.png" alt="University of Aveiro Logo" class="edu-logo">
+                            <div class="edu-text">
                                 <strong>Multimedia and Communication Technologies</strong>
                                 <span>University of Aveiro (2023-Today)</span>
                             </div>
@@ -42,24 +43,26 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section>
-            <h2>Technical Stack</h2>
-            <div class="technical-stack-container">
-                <div>Krita</div>
-                <div>Blender</div>
-                <div>DaVinci Resolve</div>
-            </div>
+            <!-- Technical Stack agora dentro da mesma estrutura flex para ficar ao lado -->
+            <aside id="skills">
+                <h2>Technical Stack</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Krita</div>
+                    <div class="skill-item">Blender</div>
+                    <div class="skill-item">DaVinci Resolve</div>
+                </div>
+            </aside>
         </section>
     </main>
 
     <footer>
-        <div>
+        <div class="social-links">
             <a href="https://www.instagram.com/davidd__3005/">Instagram</a>
-            <a href="https://v3n0m-n-3dd13.itch.io/">itch.io</a>
+            <a href="https://daviddfaro3005.itch.io/">itch.io</a>
         </div>
-    <p>&copy; 2026 Milena Faro</p>
-</footer>
+        <p>&copy; 2026 Milena Faro | Developed with HTML & CSS</p>
+    </footer>
+
 </body>
 </html>
