@@ -6,19 +6,15 @@
 }
 
 body {
-    background-color: #1a1a1a; /* Corpo para #1a1a1a */
+    background-color: #1a1a1a;
     color: #efefef;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
-main {
-    min-height: 80vh; 
-}
-
-/* 2. Header & Navigation - Single Line Layout */
+/* 2. Header & Navigation - Single Line */
 header {
-    background: #212122; /* Cor do header para #212122 */
+    background: #212122;
     padding: 20px 40px;
     border-bottom: 1px solid #333;
     display: flex;
@@ -32,56 +28,40 @@ header {
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    width: auto;
 }
 
 .profile-pic {
-    width: 60px; /* Reduzido para caber na linha */
+    width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #cb95e4; /* Todos os #DCC48E para #cb95e4 */
+    border: 2px solid #cb95e4;
     object-fit: cover;
     flex-shrink: 0;
 }
 
 h1 {
     font-size: 1.5rem;
-    background: none; /* Remover gradient do nome */
-    -webkit-background-clip: initial;
-    background-clip: initial;
-    -webkit-text-fill-color: initial;
     color: #cb95e4;
     white-space: nowrap;
-}
-
-nav {
-    display: flex;
-    gap: 15px;
 }
 
 nav a {
     color: #888;
     text-decoration: none;
+    margin-left: 20px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.85rem;
-    padding-bottom: 5px;
-    transition: all 0.3s ease;
-    border-bottom: 2px solid transparent;
+    transition: 0.3s;
 }
 
-nav a:hover, 
-nav a.active { 
+nav a:hover, nav a.active { 
     color: #cb95e4; 
 }
 
-nav a.active {
-    border-bottom: 2px solid #cb95e4; 
-}
-
-/* 3. General Layout & Typography */
+/* 3. Typography & Layout */
 section {
-    max-width: 1200px; /* Conteúdo mais largo / menos bordas laterais */
+    max-width: 1200px;
     margin: 60px auto;
     padding: 0 40px;
 }
@@ -89,127 +69,16 @@ section {
 h2 {
     border-bottom: 1px solid #333;
     padding-bottom: 10px;
-    margin-bottom: 15px; /* Gap reduzido entre título e descrição */
+    margin-bottom: 15px; /* Gap reduzido */
     color: #cb95e4;
 }
 
-h3 {
-    color: #cb95e4;
-    margin-bottom: 15px;
-}
-
-.section-intro {
-    margin-bottom: 40px;
-}
-
-p a {
-    color: #cb95e4;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* 4. About & Technical Stack - Side by Side */
-#about {
-    display: flex;
-    gap: 50px;
-    align-items: flex-start;
-}
-
-.about-content {
-    flex: 2; /* About Me mais largo */
-    display: flex;
-    flex-direction: column;
-}
-
-#skills {
-    flex: 1; /* Technical stack mais fino */
-    margin: 0;
-    padding: 0;
-}
-
-/* Education Card Styling */
-.education {
-    background: #212122;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #333;
-    margin-top: 10px;
-}
-
-.edu-item {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.edu-logo {
-    width: 120px;
-    height: auto;
-}
-
-.edu-text strong {
-    color: #efefef;
-    font-size: 1.1rem;
-    display: block; /* Nome em cima */
-    margin-bottom: 5px;
-}
-
-.edu-text span {
-    color: #888;
-    font-size: 0.9rem;
-    display: block; /* Universidade em baixo */
-}
-
-/* Technical Stack Items */
-.skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.skill-item {
-    background: #212122;
-    border: 1px solid #333;
-    color: #efefef;
-    padding: 8px 15px;
-    border-radius: 4px; 
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.skill-item:hover {
-    background: #cb95e4;
-    color: #1a1a1a;
-}
-
-/* 5. Games Page */
-.project-card {
-    background: #212122;
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 40px;
-}
-
-.game-screenshots {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.game-screenshots img {
-    width: calc(33.33% - 7px);
-    height: 180px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #333;
-}
-
-/* 6. 3D Showcase - 2 Cards side by side & Size Control */
+/* 6. 3D Showcase - CORRIGIDO */
 .work-showcase {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 cards lado a lado */
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
     gap: 30px;
+    align-items: stretch; /* Garante que os cards tenham a mesma altura */
 }
 
 .work-item {
@@ -218,70 +87,48 @@ p a {
     border-radius: 12px;
     border: 1px solid #222;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Organiza imagem e depois texto */
+    min-height: 350px; /* Garante espaço suficiente para o conteúdo */
 }
 
 .main-render, .main-video {
     width: 100%;
-    height: auto;
-    max-height: 400px; /* Evita que o vídeo fique gigante */
+    height: 250px; /* Altura fixa para manter consistência */
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
+    flex-shrink: 0; /* IMPEDE que a imagem esmague o texto abaixo */
 }
 
 .work-desc {
     color: #888;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-style: italic;
     border-left: 2px solid #cb95e4;
     padding-left: 15px;
-    margin-top: auto;
+    display: block !important; /* Garante visibilidade */
+    margin-top: auto; /* Empurra o texto para o fundo se houver espaço extra */
 }
 
-/* 7. Photography - Pinterest Grid Fixed */
+/* 7. Photography - Pinterest Grid */
 .pinterest-grid {
-    column-count: 4; /* Imagens ligeiramente mais pequenas */
+    column-count: 4;
     column-gap: 15px;
-    width: 100%;
 }
 
 .photo-item {
-    display: block; 
-    width: 100%;
+    display: block;
     margin-bottom: 15px;
-    break-inside: avoid; /* Fix para imagens não "quebrarem" entre colunas */
+    break-inside: avoid;
 }
 
 .photo-item img {
     width: 100%;
-    height: auto;
     border-radius: 8px;
-    display: block;
 }
 
-/* 8. Footer */
-footer {
-    text-align: center;
-    padding: 60px 40px;
-    color: #666;
-}
-
-.social-links a {
-    color: #efefef;
-    text-decoration: none;
-    margin: 0 15px;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: #cb95e4;
-}
-
-/* 9. Responsive */
+/* Responsividade */
 @media (max-width: 900px) {
-    header { flex-direction: column; gap: 20px; text-align: center; }
-    #about { flex-direction: column; }
     .work-showcase { grid-template-columns: 1fr; }
-    .pinterest-grid { column-count: 2; }
+    header { flex-direction: column; gap: 15px; }
 }
