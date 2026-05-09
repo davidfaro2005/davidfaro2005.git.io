@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #1a1a1a; /* Corpo para #1a1a1a */
+    background-color: #1a1a1a; 
     color: #efefef;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -18,7 +18,7 @@ main {
 
 /* 2. Header & Navigation - Single Line Layout */
 header {
-    background: #212122; /* Cor do header para #212122 */
+    background: #212122; 
     padding: 20px 40px;
     border-bottom: 1px solid #333;
     display: flex;
@@ -36,17 +36,17 @@ header {
 }
 
 .profile-pic {
-    width: 60px; /* Reduzido para caber na linha */
+    width: 60px; 
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #cb95e4; /* Todos os #DCC48E para #cb95e4 */
+    border: 2px solid #cb95e4; 
     object-fit: cover;
     flex-shrink: 0;
 }
 
 h1 {
     font-size: 1.5rem;
-    background: none; /* Remover gradient do nome */
+    background: none; 
     -webkit-background-clip: initial;
     background-clip: initial;
     -webkit-text-fill-color: initial;
@@ -81,7 +81,7 @@ nav a.active {
 
 /* 3. General Layout & Typography */
 section {
-    max-width: 1200px; /* Conteúdo mais largo / menos bordas laterais */
+    max-width: 1200px; 
     margin: 60px auto;
     padding: 0 40px;
 }
@@ -89,7 +89,7 @@ section {
 h2 {
     border-bottom: 1px solid #333;
     padding-bottom: 10px;
-    margin-bottom: 15px; /* Gap reduzido entre título e descrição */
+    margin-bottom: 15px; 
     color: #cb95e4;
 }
 
@@ -116,13 +116,13 @@ p a {
 }
 
 .about-content {
-    flex: 2; /* About Me mais largo */
+    flex: 2; 
     display: flex;
     flex-direction: column;
 }
 
 #skills {
-    flex: 1; /* Technical stack mais fino */
+    flex: 1; 
     margin: 0;
     padding: 0;
 }
@@ -205,10 +205,10 @@ p a {
     border: 1px solid #333;
 }
 
-/* 6. 3D Showcase - 2 Cards side by side & Size Control */
+/* 6. 3D Showcase - AJUSTADO PARA MOSTRAR DESCRIÇÕES */
 .work-showcase {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 cards lado a lado */
+    grid-template-columns: 1fr 1fr; 
     gap: 30px;
 }
 
@@ -219,15 +219,17 @@ p a {
     border: 1px solid #222;
     display: flex;
     flex-direction: column;
+    height: 100%; /* Garante que o card ocupe o espaço todo */
 }
 
 .main-render, .main-video {
     width: 100%;
     height: auto;
-    max-height: 400px; /* Evita que o vídeo fique gigante */
+    max-height: 350px; /* Reduzi um pouco para garantir espaço para o texto */
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
+    flex-shrink: 0; /* Impede a imagem de "esmagar" o texto */
 }
 
 .work-desc {
@@ -236,12 +238,13 @@ p a {
     font-style: italic;
     border-left: 2px solid #cb95e4;
     padding-left: 15px;
-    margin-top: auto;
+    margin-top: auto; /* Garante que o texto fique no fim do card */
+    display: block !important; /* Força a exibição */
 }
 
 /* 7. Photography - Pinterest Grid Fixed */
 .pinterest-grid {
-    column-count: 4; /* Imagens ligeiramente mais pequenas */
+    column-count: 4; 
     column-gap: 15px;
     width: 100%;
 }
@@ -250,7 +253,7 @@ p a {
     display: block; 
     width: 100%;
     margin-bottom: 15px;
-    break-inside: avoid; /* Fix para imagens não "quebrarem" entre colunas */
+    break-inside: avoid; 
 }
 
 .photo-item img {
