@@ -205,6 +205,14 @@ p a {
     border: 1px solid #333;
 }
 
+iframe {
+    border-radius: 12px; 
+    width: 100%;        
+    max-width: 550px;   
+    display: block;
+    border: none;       
+}
+
 /* 6. 3D Showcase  */
 .work-showcase {
     display: grid;
@@ -298,4 +306,12 @@ footer p a:hover {
     #about { flex-direction: column; }
     .work-showcase { grid-template-columns: 1fr; }
     .pinterest-grid { column-count: 2; }
+    .game-screenshots {
+        flex-direction: column; 
+    }
+
+    .game-screenshots img {
+        width: 100%;
+        height: auto;
+    }
 }
