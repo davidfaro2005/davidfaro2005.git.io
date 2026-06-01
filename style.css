@@ -55,13 +55,15 @@ h1 {
     padding: 5px;
 }
 
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #da9cf7;
-    border-radius: 2px;
-    transition: all 0.3s ease;
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer; /* Crucial for Safari */
+    padding: 10px;    /* Makes the hitbox slightly larger and easier to tap on a phone */
+    -webkit-tap-highlight-color: transparent; /* Removes the annoying gray box flash when tapped on iOS */
 }
 
 nav {

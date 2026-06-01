@@ -110,11 +110,15 @@
             const menuToggleBtn = document.getElementById("menuToggleBtn");
             const navMenu = document.getElementById("navMenu");
 
-            // Listen for a click on the hamburger button
-            menuToggleBtn.addEventListener("click", () => {
-                // This switches the ".mobile-open" class on and off in your CSS
+            // Helper function to handle the menu opening/closing logic
+            function toggleMenu(e) {
+                e.preventDefault(); // Prevents iOS from firing double-clicks (ghost clicks)
                 navMenu.classList.toggle("mobile-open");
-            });
+            }
+
+            // Listen for both desktop clicks AND mobile finger touches
+            menuToggleBtn.addEventListener("click", toggleMenu);
+            menuToggleBtn.addEventListener("touchstart", toggleMenu, { passive: false });
         });
     </script>
 </body>
