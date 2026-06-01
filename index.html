@@ -75,5 +75,38 @@
         <p>&copy; 2026 Milena Faro | Developed with HTML & CSS by <a href="https://gugagoncalo.github.io/GugaGoncalo.git.io">Gonçalo Oliveira</a></p>
     </footer>
 
+    <div id="portfolioLightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-display" id="lightboxTargetImg" alt="Portfolio Preview Fullscreen">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lightbox = document.getElementById("portfolioLightbox");
+            const lightboxImg = document.getElementById("lightboxTargetImg");
+            const closeBtn = document.querySelector(".lightbox-close");
+
+            // Targets all gallery views across pages: grids, items, and screenshots
+            const imageTargets = document.querySelectorAll(
+                '.pinterest-grid img, .game-screenshots img, .work-item img'
+            );
+
+            imageTargets.forEach(img => {
+                // Change cursor pointer style to communicate clickability
+                img.style.cursor = 'pointer';
+                
+                img.addEventListener('click', () => {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = img.src;
+                });
+            });
+
+            // Dim out window if user clicks close button or empty overlay backdrop
+            closeBtn.addEventListener('click', () => lightbox.style.display = "none");
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) lightbox.style.display = "none";
+            });
+        });
+    </script>
 </body>
 </html>

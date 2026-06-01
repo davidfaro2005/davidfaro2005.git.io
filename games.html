@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milena Faro | Portfolio</title>
+    
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Milena Faro | Multimedia Artist">
+    <meta property="og:description" content="Portuguese Multimedia Artist who can work on multiple fields. Explore my projects!">
+    <meta property="og:url" content="https://davidfaro2005.github.io/davidfaro2005.git.io/">
+    
+    <meta property="og:image" content="https://davidfaro2005.github.io/davidfaro2005.git.io/assets/favicon.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="256">
+    <meta property="og:image:height" content="256">
 </head>
 <body>
 
@@ -85,5 +97,38 @@
         <p>&copy; 2026 Milena Faro | Developed with HTML & CSS by <a href="https://gugagoncalo.github.io/GugaGoncalo.git.io">Gonçalo Oliveira</a></p>
     </footer>
 
+    <div id="portfolioLightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-display" id="lightboxTargetImg" alt="Portfolio Preview Fullscreen">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lightbox = document.getElementById("portfolioLightbox");
+            const lightboxImg = document.getElementById("lightboxTargetImg");
+            const closeBtn = document.querySelector(".lightbox-close");
+
+            // Targets all gallery views across pages: grids, items, and screenshots
+            const imageTargets = document.querySelectorAll(
+                '.pinterest-grid img, .game-screenshots img, .work-item img'
+            );
+
+            imageTargets.forEach(img => {
+                // Change cursor pointer style to communicate clickability
+                img.style.cursor = 'pointer';
+                
+                img.addEventListener('click', () => {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = img.src;
+                });
+            });
+
+            // Dim out window if user clicks close button or empty overlay backdrop
+            closeBtn.addEventListener('click', () => lightbox.style.display = "none");
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) lightbox.style.display = "none";
+            });
+        });
+    </script>
 </body>
 </html>

@@ -25,6 +25,9 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
 }
 
 .header-content {
@@ -315,4 +318,50 @@ footer p a:hover {
         width: 100%;
         height: auto;
     }
+}
+
+
+
+/* Interactive overlay layout base */
+.lightbox-modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999; /* Higher than your header to lock view */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scaled Image parameters */
+.lightbox-display {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: zoomInEffect 0.25s ease;
+}
+
+/* Close action icon interface placement */
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: #ce9a6b; /* Highlight shade match styling matching your themes */
+}
+
+@keyframes zoomInEffect {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
