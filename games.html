@@ -22,10 +22,16 @@
 
     <header>
         <div class="header-content">
-            <img src="assets/profile.jpeg" alt="Milena Faro Profile" class="profile-pic">
             <h1>Milena Faro</h1>
         </div>
-        <nav>
+        
+        <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="navMenu">
             <a href="index.html">About Me</a>
             <a href="games.html" class="active">Games</a>
             <a href="2d-work.html">2D Work</a>
@@ -127,6 +133,19 @@
             closeBtn.addEventListener('click', () => lightbox.style.display = "none");
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) lightbox.style.display = "none";
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggleBtn = document.getElementById("menuToggleBtn");
+            const navMenu = document.getElementById("navMenu");
+
+            // Listen for a click on the hamburger button
+            menuToggleBtn.addEventListener("click", () => {
+                // This switches the ".mobile-open" class on and off in your CSS
+                navMenu.classList.toggle("mobile-open");
             });
         });
     </script>

@@ -38,23 +38,30 @@ header {
     width: auto;
 }
 
-.profile-pic {
-    width: 60px; 
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #cb95e4; 
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
 h1 {
     font-size: 1.5rem;
-    background: none; 
-    -webkit-background-clip: initial;
-    background-clip: initial;
-    -webkit-text-fill-color: initial;
     color: #da9cf7;
     white-space: nowrap;
+}
+
+/* Hamburger Toggle Button Container Styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #da9cf7;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
 nav {
@@ -85,7 +92,7 @@ nav a.active {
 /* 3. General Layout & Typography */
 section {
     max-width: 1200px; 
-    margin: 60px auto;
+    margin: 40px auto;
     padding: 0 40px;
 }
 
@@ -101,33 +108,62 @@ h3 {
     margin-bottom: 15px;
 }
 
-.section-intro {
-    margin-bottom: 40px;
-}
-
 p a {
     color: #da9cf7;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* 4. About & Technical Stack - Side by Side */
+.section-intro {
+    margin-bottom: 30px; 
+}
+
+/* 4. About Section Layout Adjustments */
 #about {
     display: flex;
-    gap: 50px;
-    align-items: flex-start;
+    flex-direction: column; /* Forces rows to stack cleanly vertically */
+    gap: 40px;
+    width: 100%;
+}
+
+/* Intro Row Configuration */
+.about-intro-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start; /* Changed from center to flex-start */
+    width: 100%;
+}
+
+/* Strict Image Sizing Fix */
+.about-profile-pic {
+    width: 300px;         /* Explicit bound width limit */
+    height: 300px;        /* Consistent square bounding box */
+    border-radius: 12px;  /* Smooth box corners matching layout cards */
+    border: 3px solid #cb95e4;
+    object-fit: cover;    /* Crops clean centering behavior without distortion */
+    flex-shrink: 0;       /* Locks strict size constraints layout values */
 }
 
 .about-content {
-    flex: 2; 
-    display: flex;
-    flex-direction: column;
+    flex: 1;
 }
 
-#skills {
-    flex: 1; 
-    margin: 0;
-    padding: 0;
+/* Details Row Setup (Education + Tech Stack Side by Side) */
+.about-details-row {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.about-details-row .education-container {
+    flex: 1.2; /* Gives slightly more visual room to text layout elements */
+}
+
+.about-details-row #skills {
+    flex: 0.8;
 }
 
 /* Education Card Styling */
@@ -141,13 +177,15 @@ p a {
 
 .edu-item {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row; /* Horizontal profile matching wireframes */
+    align-items: center;
+    gap: 20px;
 }
 
 .edu-logo {
-    width: 120px;
+    width: 80px;
     height: auto;
+    flex-shrink: 0;
 }
 
 .edu-text strong {
@@ -243,16 +281,6 @@ iframe {
     flex-shrink: 0; 
 }
 
-.work-desc {
-    color: #efefef;
-    font-size: 0.9rem;
-    font-style: italic;
-    border-left: 2px solid #da9cf7;
-    padding-left: 15px;
-    margin-top: auto;
-    display: block !important; 
-}
-
 /* 7. Photography  */
 .pinterest-grid {
     column-count: 4; 
@@ -293,40 +321,64 @@ footer {
     color: #da9cf7;
 }
 
-footer p a {
-    color: inherit; 
-    text-decoration: none;
-    font-weight: normal;
-    transition: color 0.3s;
-}
-
-footer p a:hover {
-    color: #da9cf7; 
-}
-
-/* 9. Responsive */
-@media (max-width: 900px) {
-    header { flex-direction: column; gap: 20px; text-align: center; }
-    #about { flex-direction: column; }
-    .work-showcase { grid-template-columns: 1fr; }
-    .pinterest-grid { column-count: 2; }
-    .game-screenshots {
-        flex-direction: column; 
+/* 9. Responsive Mobile Adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+        position: relative;
     }
 
-    .game-screenshots img {
+    .menu-toggle {
+        display: flex; /* Displays mobile menu button hamburger view */
+    }
+
+    nav {
+        display: none; /* Collapses menu links list display hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        height: auto;
+        background: #431f54;
+        padding: 20px;
+        border-bottom: 2px solid #da9cf7;
+        gap: 20px;
+        z-index: 1001;
     }
+
+    nav.mobile-open {
+        display: flex; /* Opens up nav panel menu tree */
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    .about-intro-wrapper, .about-details-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .about-profile-pic {
+        width: 100%;
+        max-width: 280px;
+        height: 280px;
+    }
+
+    .pinterest-grid { column-count: 2; }
+    .work-showcase { grid-template-columns: 1fr; }
 }
 
-
-
-/* Interactive overlay layout base */
+/* 10. Interactive Overlay Lightbox CSS */
 .lightbox-modal {
     display: none; 
     position: fixed;
-    z-index: 9999; /* Higher than your header to lock view */
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
@@ -336,7 +388,6 @@ footer p a:hover {
     justify-content: center;
 }
 
-/* Scaled Image parameters */
 .lightbox-display {
     max-width: 85%;
     max-height: 85%;
@@ -345,7 +396,6 @@ footer p a:hover {
     animation: zoomInEffect 0.25s ease;
 }
 
-/* Close action icon interface placement */
 .lightbox-close {
     position: absolute;
     top: 25px;
@@ -354,11 +404,6 @@ footer p a:hover {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.2s;
-}
-
-.lightbox-close:hover {
-    color: #ce9a6b; /* Highlight shade match styling matching your themes */
 }
 
 @keyframes zoomInEffect {

@@ -22,10 +22,16 @@
 
     <header>
         <div class="header-content">
-            <img src="assets/profile.jpeg" alt="Milena Faro Profile" class="profile-pic">
             <h1>Milena Faro</h1>
         </div>
-        <nav>
+        
+        <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="navMenu">
             <a href="index.html" class="active">About Me</a>
             <a href="games.html">Games</a>
             <a href="2d-work.html">2D Work</a>
@@ -34,14 +40,21 @@
         </nav>
     </header>
 
-    <main class="container-flex-row"> <!-- Novo container para o layout lado a lado -->
+    <main>
         <section id="about">
-            <div class="about-content">
-                <h2>About Me</h2>
-                <div class="bio">
-                    <p>Hello! My name is Milena Faro, I'm a 21 year old portuguese student finishing my first degree and currently working on a project called "GreenGuardians". My main focus is digital art, but I also have a strong liking for photography, 3D modelling and animation.</p>
+        
+            <div class="about-intro-wrapper">
+                <img src="assets/profile.jpeg" alt="Milena Faro Profile" class="about-profile-pic">
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <div class="bio">
+                        <p>Hello! My name is Milena Faro, I'm a 21 year old portuguese student finishing my first degree and currently working on a project called "GreenGuardians". My main focus is digital art, but I also have a strong liking for photography, 3D modelling and animation.</p>
+                    </div>
                 </div>
-                
+            </div>
+
+            <div class="about-details-row">
+            
                 <div class="education-container">
                     <h3>Education</h3>
                     <div class="education">
@@ -54,17 +67,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Technical Stack agora dentro da mesma estrutura flex para ficar ao lado -->
-            <aside id="skills">
-                <h2>Technical Stack</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">Krita</div>
-                    <div class="skill-item">Blender</div>
-                    <div class="skill-item">DaVinci Resolve</div>
-                </div>
-            </aside>
+                <aside id="skills">
+                    <h3>Technical Stack</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Krita</div>
+                        <div class="skill-item">Blender</div>
+                        <div class="skill-item">DaVinci Resolve</div>
+                    </div>
+                </aside>
+                
+            </div> 
         </section>
     </main>
 
@@ -82,29 +95,47 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Mobile Menu Toggle Script Core Architecture
+            const menuToggleBtn = document.getElementById("menuToggleBtn");
+            const navMenu = document.getElementById("navMenu");
+
+            menuToggleBtn.addEventListener("click", () => {
+                navMenu.classList.toggle("mobile-open");
+            });
+
+            // Universal Image Overlay Click Script Module
             const lightbox = document.getElementById("portfolioLightbox");
             const lightboxImg = document.getElementById("lightboxTargetImg");
             const closeBtn = document.querySelector(".lightbox-close");
 
-            // Targets all gallery views across pages: grids, items, and screenshots
             const imageTargets = document.querySelectorAll(
-                '.pinterest-grid img, .game-screenshots img, .work-item img'
+                '.pinterest-grid img, .game-screenshots img, .work-item img, .about-profile-pic'
             );
 
             imageTargets.forEach(img => {
-                // Change cursor pointer style to communicate clickability
                 img.style.cursor = 'pointer';
-                
                 img.addEventListener('click', () => {
                     lightbox.style.display = "flex";
                     lightboxImg.src = img.src;
                 });
             });
 
-            // Dim out window if user clicks close button or empty overlay backdrop
             closeBtn.addEventListener('click', () => lightbox.style.display = "none");
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) lightbox.style.display = "none";
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggleBtn = document.getElementById("menuToggleBtn");
+            const navMenu = document.getElementById("navMenu");
+
+            // Listen for a click on the hamburger button
+            menuToggleBtn.addEventListener("click", () => {
+                // This switches the ".mobile-open" class on and off in your CSS
+                navMenu.classList.toggle("mobile-open");
             });
         });
     </script>
