@@ -20,25 +20,27 @@
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>Milena Faro</h1>
-        </div>
-        
-        <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Navigation Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                Milena Faro
+            </a>
+            
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle navigation">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
 
-        <nav id="navMenu">
-            <a href="index.html">About Me</a>
-            <a href="games.html">Games</a>
-            <a href="2d-work.html">2D Work</a>
-            <a href="3d-work.html">3D Work</a>
-            <a href="photography.html" class="active">Photography</a>
-        </nav>
-    </header>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">About Me</a>
+                <a href="games.html">Games</a>
+                <a href="2d-work.html">2D Work</a>
+                <a href="3d-work.html">3D Work</a>
+                <a href="photography.html" class="active">Photography</a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section id="photography">
@@ -102,18 +104,34 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const menuToggleBtn = document.getElementById("menuToggleBtn");
-            const navMenu = document.getElementById("navMenu");
+            const menuToggleBtn = document.getElementById('menuToggleBtn');
+            const navLinks = document.getElementById('navLinks');
 
-            // Helper function to handle the menu opening/closing logic
             function toggleMenu(e) {
-                e.preventDefault(); // Prevents iOS from firing double-clicks (ghost clicks)
-                navMenu.classList.toggle("mobile-open");
+                e.preventDefault(); // Lock multi-firing native device delays
+                menuToggleBtn.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            
+                // If overlay drawer opens up, block layout content background scroll depth
+                if (navLinks.classList.contains('open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
             }
 
-            // Listen for both desktop clicks AND mobile finger touches
-            menuToggleBtn.addEventListener("click", toggleMenu);
-            menuToggleBtn.addEventListener("touchstart", toggleMenu, { passive: false });
+            // Native sync for tactile instant screens feedback mapping targets
+            menuToggleBtn.addEventListener('click', toggleMenu);
+            menuToggleBtn.addEventListener('touchstart', toggleMenu, { passive: false });
+
+            // Collapse display grid layers down if a menu target hyperlink item gets selected
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggleBtn.classList.remove('active');
+                    navLinks.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                });
+            });
         });
     </script>
 </body>
